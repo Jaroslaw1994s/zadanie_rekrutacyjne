@@ -31,7 +31,7 @@ class CurrencyController extends AbstractController
             $exchangeRateFloat = $rate->Mid;
             $exchangeRate = (float)$exchangeRateFloat*10000;
 
-            $CurrencySYNC = new Currency($name, $currencyCode, $exchangeRate);
+            $CurrencyNBP = new Currency($name, $currencyCode, $exchangeRate);
             $isUpdated = FALSE;
 
             foreach($currencyAll as $currency)
@@ -43,6 +43,11 @@ class CurrencyController extends AbstractController
                     $entityManager->flush();
                     $isUpdated = TRUE;
                 }
+            }
+            if($isUpdated == FALSE)
+            {
+                $entityManager->persist($CurrencyNBP);
+                $entityManager->flush();
             }
         }
 
