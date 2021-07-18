@@ -28,7 +28,7 @@ class Currency
     private $currencyCode;
 
     /**
-     * @ORM\Column(type="int", length=10)
+     * @ORM\Column(type="integer", length=10)
      */
     private $exchangeRate;
 
