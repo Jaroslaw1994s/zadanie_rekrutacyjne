@@ -32,6 +32,18 @@ class CurrencyController extends AbstractController
             $exchangeRate = (float)$exchangeRateFloat*10000;
 
             $CurrencySYNC = new Currency($name, $currencyCode, $exchangeRate);
+            $isUpdated = FALSE;
+
+            foreach($currencyAll as $currency)
+            {
+                if($currency->getCurrencyCode() == $currencyCode)
+                {
+                    $currency->setExchangeRate($exchangeRate);
+                    $entityManager->persist($currency);
+                    $entityManager->flush();
+                    $isUpdated = TRUE;
+                }
+            }
         }
 
 
