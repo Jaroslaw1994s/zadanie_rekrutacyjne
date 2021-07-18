@@ -23,7 +23,7 @@ class Currency
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", unique=true, length=3)
      */
     private $currencyCode;
 
