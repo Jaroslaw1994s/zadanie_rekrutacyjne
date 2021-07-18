@@ -9,12 +9,20 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1> <center> {{ controller_name }} <center></h1>
+    <table>
+    <tr>
+    <td> Rodzaj Waluty </td>
+    <td> Kod Waluty </td>
+    <td> Kurs Wymiany </td>
+    </tr>
+{% for currency in table %}
+    <tr>
+    <td>{{ currency.name }}</td>
+    <td>{{ currency.currencyCode}}</td>
+    <td>{{ currency.exchangeRate/10000 }}</td>
+    </tr>
+{% endfor %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/kamci/Desktop/projekt/zadanie_rekrutacyjne/src/Controller/CurrencyController.php'|file_link(0) }}">src/Controller/CurrencyController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/kamci/Desktop/projekt/zadanie_rekrutacyjne/templates/currency/index.html.twig'|file_link(0) }}">templates/currency/index.html.twig</a></code></li>
-    </ul>
 </div>
 {% endblock %}

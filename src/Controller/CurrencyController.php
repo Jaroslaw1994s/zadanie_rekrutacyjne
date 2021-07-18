@@ -31,7 +31,7 @@ class CurrencyController extends AbstractController
             $exchangeRateFloat = $rate->Mid;
             $exchangeRate = (float)$exchangeRateFloat*10000;
 
-            $CurrencyNBP = new Currency($name, $currencyCode, $exchangeRate);
+            $currencyNBP = new Currency($name, $currencyCode, $exchangeRate);
             $isUpdated = FALSE;
 
             foreach($currencyAll as $currency)
@@ -46,15 +46,13 @@ class CurrencyController extends AbstractController
             }
             if($isUpdated == FALSE)
             {
-                $entityManager->persist($CurrencyNBP);
+                $entityManager->persist($currencyNBP);
                 $entityManager->flush();
             }
         }
 
 
-        return $this->render('currency/index.html.twig', [
-            'controller_name' => 'CurrencyController',
-        ]);
+        return $this-> display($entityManager);
     }
     /**
      * @Route("/currency", name="currency")
@@ -62,11 +60,11 @@ class CurrencyController extends AbstractController
     public function display(EntityManagerInterface $em): Response
     {
         $repository = $em->getRepository(Currency::class);
-        $currencyAll = $repository->findAll();
-        $entityManager = $this->getDoctrine()->getManager();
+        $currency = $repository->findAll();
 
         return $this->render('currency/index.html.twig', [
-            'controller_name' => 'CurrencyController',
+            'controller_name' => 'Aktualne Kursy Walut',
+            'table' => ($currency)
         ]);
     }
 

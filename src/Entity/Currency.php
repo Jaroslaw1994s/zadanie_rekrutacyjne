@@ -62,7 +62,7 @@ class Currency
 
     public function setCurrencyCode(string $currencyCode): self
     {
-        $this->name = $currencyCode;
+        $this->currencyCode = $currencyCode;
 
         return $this;
     }
