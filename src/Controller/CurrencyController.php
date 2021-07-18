@@ -63,7 +63,7 @@ class CurrencyController extends AbstractController
         $currency = $repository->findAll();
 
         return $this->render('currency/index.html.twig', [
-            'controller_name' => 'Aktualne Kursy Walut',
+            'controller_name' => 'Aktualne Kursy Walut by Jarosław Kotlorz',
             'table' => ($currency)
         ]);
     }
