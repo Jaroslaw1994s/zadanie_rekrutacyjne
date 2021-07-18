@@ -73,7 +73,7 @@ class Currency
 
     public function setExchangeRate(string $exchangeRate): self
     {
-        $this->name = $exchangeRate;
+        $this->exchangeRate = $exchangeRate;
 
         return $this;
     }
